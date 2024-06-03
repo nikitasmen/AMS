@@ -1,0 +1,2 @@
+# AMS
+Alumni Managment System
