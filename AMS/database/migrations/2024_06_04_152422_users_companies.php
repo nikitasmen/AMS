@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users_companies', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained("users")->cascadeOnDelete();
             $table->foreignId('company_id')->constrained("companies")->cascadeOnDelete();
-            $table->string('role'); // role of the user in the company
+            $table->string('role'); //admin, employee
         });
     }
 

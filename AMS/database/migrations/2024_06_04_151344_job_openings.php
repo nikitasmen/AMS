@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('job_openings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id')->constrained("companies")->onDelete('cascade');
             $table->string('title');
             $table->longText('description');
             $table->unsignedInteger('salary');
             $table->string('location');
-            $table->string('type');  //remote on-site hybrid
+            $table->string('type');
             $table->timestamps();
         });
     }
