@@ -17,11 +17,9 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         User::factory()->count(5)->create([
-            'name' => fake()->name(),
-            'email' => function() {
-                return fake()->unique()->email;
-            },
-            'password' => fake()->password(),
+            'name' => function(){ return fake()->name();},
+            'email' => function() { return fake()->unique()->email;},
+            'password' => function(){ return fake()->password(); } ,
         ]);
     }
 }

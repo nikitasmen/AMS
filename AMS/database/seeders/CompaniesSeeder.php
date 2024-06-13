@@ -14,13 +14,11 @@ class CompaniesSeeder extends Seeder
     public function run(): void
     {
         Companies::factory(5)->create([
-            'name' => fake()->company(),
-            'email' => function() {
-                return fake()->unique()->email;
-            },
-            'password' => fake()->password(),
-            'website' => fake()->url(),
-            'major_industry' => fake()->randomElement(['Technology', 'Finance', 'Healthcare', 'Education', 'Retail', 'Manufacturing', 'Construction', 'Hospitality', 'Transportation', 'Energy', 'Agriculture', 'Media', 'Entertainment', 'Telecommunications', 'Automotive', 'Real Estate', 'Government', 'Nonprofit', 'Other'])
+            'name' => function(){ return fake()->company();},
+            'email' => function(){ return fake()->unique()->email;},
+            'password' => function(){ return fake()->password();},
+            'website' => function(){ return fake()->url();},
+            'major_industry' => function(){ return fake()->randomElement(['Technology', 'Finance', 'Healthcare', 'Education', 'Retail', 'Manufacturing', 'Construction', 'Hospitality', 'Transportation', 'Energy', 'Agriculture', 'Media', 'Entertainment', 'Telecommunications', 'Automotive', 'Real Estate', 'Government', 'Nonprofit', 'Other']);}
         ]);
     }
 }

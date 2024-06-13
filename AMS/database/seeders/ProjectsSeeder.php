@@ -14,12 +14,12 @@ class ProjectsSeeder extends Seeder
     public function run(): void
     {
         Projects::factory()->count(5)->create([
-            'name' => fake()->name(),
-            'description' => fake()->text(),
-            'budget' => fake()->numberBetween(1, 9000),
-            'start_date' => fake()->date(),
-            'end_date' => fake()->date(),
-            'status' => fake()->numberBetween(1, 3)
+            'name' => function(){ return fake()->name(); },
+            'description' => function(){ return fake()->text();},
+            'budget' => function(){ return fake()->numberBetween(1, 9000);},
+            'start_date' => function(){ return fake()->date(); },
+            'end_date' => function(){ return fake()->date();},
+            'status' => function(){ return fake()->numberBetween(1, 3);}
         ]);
     }
 }

@@ -19,11 +19,11 @@ class Job_openingsSeeder extends Seeder
 
         Job_openings::factory()->count(3)->create([
             'company_id' => fake()->randomElement($companyIDs),
-            'title' => fake()->jobTitle(),
-            'description' => fake()->sentence(),
-            'salary' => fake()->numberBetween(1000, 10000),
-            'location' => fake()->city(),
-            'type' => fake()->randomElement(['full-time', 'part-time', 'contract', 'internship']),
+            'title' => function(){ return fake()->jobTitle();},
+            'description' => function(){ return fake()->sentence();},
+            'salary' => function(){ return fake()->numberBetween(1000, 10000);},
+            'location' => function(){ return fake()->city();},
+            'type' => function(){ return fake()->randomElement(['full-time', 'part-time', 'contract', 'internship']);}
         ]);
     }
 }
