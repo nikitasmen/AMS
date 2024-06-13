@@ -15,7 +15,9 @@ class CompaniesSeeder extends Seeder
     {
         Companies::factory(5)->create([
             'name' => fake()->company(),
-            'email' => fake()->unique()->safeEmail(),
+            'email' => function() {
+                return fake()->unique()->email;
+            },
             'password' => fake()->password(),
             'website' => fake()->url(),
             'major_industry' => fake()->randomElement(['Technology', 'Finance', 'Healthcare', 'Education', 'Retail', 'Manufacturing', 'Construction', 'Hospitality', 'Transportation', 'Energy', 'Agriculture', 'Media', 'Entertainment', 'Telecommunications', 'Automotive', 'Real Estate', 'Government', 'Nonprofit', 'Other'])

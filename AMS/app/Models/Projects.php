@@ -17,4 +17,9 @@ class Projects extends Model
         'end_date',
         'status'
     ];
+
+    public function projectsOfUser()
+    {
+        return $this->hasMany(User_projects::class, 'project_id', 'id');
+    }
 }

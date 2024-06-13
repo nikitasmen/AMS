@@ -16,4 +16,9 @@ class Companies extends Model
         'website',
         'major_industry'
     ];
+
+    public function job_openings()
+    {
+        return $this->hasMany(Job_openings::class, 'company_id', 'id');
+    }
 }

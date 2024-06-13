@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Companies;
 use App\Models\Job_openings;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,8 @@ class Job_openingsSeeder extends Seeder
      */
     public function run(): void
     {
-        $companyIDs = DB::table('companies')->plunk('id');
+        $companyIDs = Companies::all()->pluck('id')->toArray();
+
         Job_openings::factory()->count(3)->create([
             'company_id' => fake()->randomElement($companyIDs),
             'title' => fake()->jobTitle(),

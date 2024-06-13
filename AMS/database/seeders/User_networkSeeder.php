@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\User_network;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,13 @@ class User_networkSeeder extends Seeder
      */
     public function run(): void
     {
-        $coursesIDs = DB::table('users')->plunk('id');
-        User_network::factory(3)->create([
-            'user_id' => fake()->randomElement($coursesIDs),
-            'network_id' => fake()->randomElement($coursesIDs),
-        ]);
+        $userId = User::all()->pluck('id')->toArray();
+        $networkId = User::all()->pluck('id')->toArray();
+
+        User_network::factory(3)->create()->each(function ($user_network) use ($userId, $networkId) {
+            $user_network->user_id = fake()->randomElement($userId);
+            $user_network->network_id = fake()->randomElement($networkId);
+        });
+
     }
 }
